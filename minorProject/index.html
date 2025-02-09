@@ -25,13 +25,14 @@
 
 
         <!-- Camera -->
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-camera gps-camera='gpsMinDistance: 5'></a-camera>
     </a-scene>
 
     <script>
-        // Log when the model is loaded
-        document.querySelector('[gltf-model]').addEventListener('model-loaded', () => {
-            console.log('Model loaded successfully from:', 'https://forschooljackson.github.io/NFT/model/tiger.glb');
+        // Wait for GPS to initialize
+        window.addEventListener('gps-camera-update-position', (e) => {
+            document.getElementById('status').innerText = "GPS Initialized! Model should appear.";
+            console.log("GPS Position Updated:", e.detail);
         });
 
         // Log model loading
