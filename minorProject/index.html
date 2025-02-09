@@ -1,16 +1,40 @@
 <!DOCTYPE html>
 <html>
-    <!-- Load a 3D primitive at specific GPS location -->
+<!-- Load a 3D primitive at specific GPS location -->
+
 <head>
-<title>AR.js A-Frame Location-based</title>
-<script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
-<script type='text/javascript' src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+    <title>AR.js with model</title>
+    <!-- import aframe and then ar.js with image tracking / location based features -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js'></script>
+    <script type='text/javascript'
+        src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+    <!-- then import aframe-extras -->
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.5.2/dist/aframe-extras.min.js"></script>
 </head>
-<body>
-<a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false' renderer='antialias: true; alpha: true'>
-    <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
-    <a-entity material='color: red' geometry='primitive: box' gps-new-entity-place="latitude: 43.0874453; longitude: -77.658576" scale="5 5 5"></a-entity>
-</a-scene>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
+        renderer='antialias: true; alpha: true' embedded>
+
+        <!-- Place 3D Model at GPS Location -->
+        <a-entity gps-new-entity-place="latitude: 43.0874453; longitude: -77.658576"
+            gltf-model="https://forschooljackson.github.io/NFT/model/tiger.glb" scale="5 5 5"
+            animation-mixer="clip: *;">
+        </a-entity>
+
+
+        <!-- Camera -->
+        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+    </a-scene>
+
+    <script>
+        // Log when the model is loaded
+        document.querySelector('[gltf-model]').addEventListener('model-loaded', () => {
+            console.log('Model loaded successfully from:', 'https://forschooljackson.github.io/NFT/model/tiger.glb');
+        });
+    </script>
 </body>
+
 </html>
