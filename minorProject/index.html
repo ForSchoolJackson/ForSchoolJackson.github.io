@@ -14,18 +14,21 @@
 </head>
 
 <body style="margin: 0; overflow: hidden;">
+    <p id="status" style="position: absolute; top: 10px; left: 10px; color: white; background: black; padding: 5px;">
+        Waiting for GPS...</p>
+
     <a-scene vr-mode-ui='enabled: false' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: false'
         renderer='antialias: true; alpha: true' embedded>
 
         <!-- Place 3D Model at GPS Location -->
         <a-entity gps-entity-place="latitude: 43.0874453; longitude: -77.658576"
-            gltf-model="https://forschooljackson.github.io/NFT/model/tiger.glb" scale="5 5 5"
-            animation-mixer="clip: *;">
+            gltf-model="https://forschooljackson.github.io/NFT/model/tiger.glb" scale="20 20 20" position="0 2 0"
+            rotation="0 180 0" animation-mixer>
         </a-entity>
 
 
         <!-- Camera -->
-        <a-camera gps-camera='gpsMinDistance: 5'></a-camera>
+        <a-camera gps-camera rotation-reader></a-camera>
     </a-scene>
 
     <script>
