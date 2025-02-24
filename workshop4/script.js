@@ -9,14 +9,19 @@ const loadPlaces = () => {
     const scene = document.querySelector("a-scene");
 
     places.forEach(place => {
-        const entity = document.createElement("a-sphere");
-        
-        entity.setAttribute("radius", "1");
-        entity.setAttribute("color", "blue");
+        //create sphere
+        const sphere = document.createElement("a-sphere");
+        sphere.setAttribute("color", "blue")
+        sphere.setAttribute("radius", "1");
+        entity.appendChild(sphere);
+
+        //entity
+        const entity = document.createElement("a-entity");
         entity.setAttribute("gps-entity-place", `latitude: ${place.latitude}; longitude: ${place.longitude}`);
         //entity.setAttribute("geometry", "primitive: sphere; radius: 1");
         //entity.setAttribute("color", "blue");
 
+        //text
         const text = document.createElement("a-text");
         text.setAttribute("value", place.name);
         text.setAttribute("align", "center");
