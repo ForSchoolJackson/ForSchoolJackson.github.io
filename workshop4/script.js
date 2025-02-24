@@ -13,6 +13,7 @@ const loadPlaces = () => {
         const sphere = document.createElement("a-sphere");
         sphere.setAttribute("color", "blue")
         sphere.setAttribute("radius", "1");
+        entity.setAttribute("position", "0 1 0");
         entity.appendChild(sphere);
 
         //entity
