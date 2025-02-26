@@ -5,6 +5,7 @@ const places = [
     { name: "Rochester Contemporary Art Center", latitude: 43.156619, longitude: -77.600730 }
 ];
 
+
 const loadPlaces = () => {
     const scene = document.querySelector("a-scene");
 
