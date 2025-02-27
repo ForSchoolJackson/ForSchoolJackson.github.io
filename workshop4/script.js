@@ -19,7 +19,7 @@ const loadPlaces = () => {
         const text = document.createElement("a-text");
         text.setAttribute("value", place.name);
         text.setAttribute("align", "center");
-        text.setAttribute("position", "0 2 0");
+        text.setAttribute("position", "10 10 10");
         entity.appendChild(text);
 
         entity.addEventListener("click", () => alert(`You clicked on: ${place.name}`));

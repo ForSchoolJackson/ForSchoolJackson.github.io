@@ -4,7 +4,7 @@ const fetchPlacesFromOSM = async (latitude, longitude) => {
     const radius = 1000; // radius in meters
     const query = `
         [out:json];
-        node["historic"="monument"](around:${radius},${latitude},${longitude});
+        node["amenity"="cafe"](around:${radius},${latitude},${longitude});
         out;
     `;
 
