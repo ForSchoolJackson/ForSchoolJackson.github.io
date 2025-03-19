@@ -1,4 +1,4 @@
-AFRAME.registerComponent('custom-listener', {
+AFRAME.registerComponent('click-listener', {
     init: function () {
         var el = this.el;
 
