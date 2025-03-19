@@ -1,44 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Custom Component Example</title>
-    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
-    <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
-  </head>
-  <body style="margin: 0; overflow: hidden;">
-    <a-scene embedded arjs vr-mode-ui="enabled: false">
-      <a-entity camera>
-        <a-entity cursor="fuse: true; rayOrigin: mouse"></a-entity>
-      </a-entity>
-      <!-- Interactive object with our custom component -->
-      <a-box position="0 1 -3" color="#4CC3D9" click-listener></a-box>
-    </a-scene>
 
-    <script>
-      // Register a custom component to handle click events
-      AFRAME.registerComponent('click-listener', {
-        init: function () {
-          // Store a reference to the element
-          var el = this.el;
+<head>
+  <meta charset="utf-8">
+  <title>Custom Component Example</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-          // Add a click event listener to the element
-          el.addEventListener('click', function (evt) {
-            console.log('Element clicked:', el);
-            // For demonstration: Toggle the color of the element
-            var currentColor = el.getAttribute('color');
-            el.setAttribute('color', currentColor === '#4CC3D9' ? '#EF2D5E' : '#4CC3D9');
-          });
+<body style="margin: 0; overflow: hidden;">
+  <a-scene embedded arjs vr-mode-ui="enabled: false">
+    <a-entity camera>
+      <a-entity cursor="fuse: true; rayOrigin: mouse"></a-entity>
+    </a-entity>
+    <!-- Interactive object with our custom component -->
+    <a-box position="0 1 -3" color="#4CC3D9" click-listener></a-box>
+  </a-scene>
 
-          // You can also add listeners for other events, for example:
-          el.addEventListener('mouseenter', function (evt) {
-            console.log('Mouse entered:', el);
-          });
-          el.addEventListener('mouseleave', function (evt) {
-            console.log('Mouse left:', el);
-          });
-        }
-      });
-    </script>
-  </body>
+  <script src="script.js"></script>
+
+  <div class="buttons">
+    <button class="say-hi-button">Say Hi</button>
+  </div>
+</body>
+
+
 </html>
