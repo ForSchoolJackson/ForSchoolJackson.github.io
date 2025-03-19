@@ -18,9 +18,9 @@ AFRAME.registerComponent('custom-listener', {
             // You could update the UI or trigger additional actions based on the new position
         });
 
-        document.querySelector('.say-hi-button').addEventListener('click', function () {
-            alert('Hi there!');
-        });
+        // document.querySelector('.say-hi-button').addEventListener('click', function () {
+        //     alert('Hi there!');
+        // });
     }
 });
 
