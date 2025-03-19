@@ -17,9 +17,10 @@ AFRAME.registerComponent('custom-listener', {
             alert('GPS entity updated position: ' + evt.detail);
             // You could update the UI or trigger additional actions based on the new position
         });
+
+        document.querySelector('.say-hi-button').addEventListener('click', function () {
+            alert('Hi there!');
+        });
     }
 });
 
-document.querySelector('.say-hi-button').addEventListener('click', function () {
-    alert('Hi there!');
-});
