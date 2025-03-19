@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Custom Component with MarkerFound and GPS Update</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+    <script src='https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js'></script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Marker element with custom component -->
+      <a-marker preset="hiro" custom-listener>
+        <a-box position="0 0 0" color="#4CC3D9"></a-box>
+      </a-marker>
+      
+      <!-- Example GPS entity using gps-entity-place -->
+      <a-entity 
+        gps-entity-place="latitude: 43.0800896; longitude: -77.676544" 
+        custom-listener>
+        <a-sphere radius="1" color="blue"></a-sphere>
+      </a-entity>
+      
+      <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+      // Register a custom component to handle events
+      AFRAME.registerComponent('custom-listener', {
+        init: function () {
+          var el = this.el;
+          
+          // Listen for the markerFound event (from AR.js)
+          el.addEventListener('markerFound', function () {
+            concole.log('Marker found on element', el);
+            // For demonstration: Toggle the element's color
+            var currentColor = el.getAttribute('color');
+            el.setAttribute('color', currentColor === '#4CC3D9' ? '#EF2D5E' : '#4CC3D9');
+          });
+
+          // Listen for the gps-entity-place update event
+          // (This event is fired when the entity's position is updated based on GPS data)
+          el.addEventListener('gps-entity-place-update-position', function (evt) {
+            alert('GPS entity updated position: ' + evt.detail);
+            // You could update the UI or trigger additional actions based on the new position
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
