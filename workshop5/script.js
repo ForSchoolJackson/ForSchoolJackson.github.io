@@ -5,12 +5,8 @@ AFRAME.registerComponent('click-listener', {
         // Listen for the markerFound event (from AR.js)
         el.addEventListener('markerFound', function () {
             console.log('Marker found on element', el);
-
-            // Get current color from the material attribute
-            var currentColor = el.getAttribute('material').color;
             
-            // Toggle the color
-            el.setAttribute('material', 'color', currentColor === '#4CC3D9' ? '#EF2D5E' : '#4CC3D9');
+            toggleColor();
         });
 
         // Listen for the gps-entity-place update event
@@ -19,8 +15,17 @@ AFRAME.registerComponent('click-listener', {
         });
 
         // Fix button event listener
-        document.querySelector('.say-hi-button').addEventListener('click', function () {
-            alert('Hi there!');
-        });
+        var button = document.querySelector('.say-hi-button');
+        if (button) {
+            button.addEventListener('click', function () {
+                toggleColor();
+            });
+        }
+
+        // Function to toggle color
+        function toggleColor() {
+            var currentColor = el.getAttribute('material').color;
+            el.setAttribute('material', 'color', currentColor === '#4CC3D9' ? '#EF2D5E' : '#4CC3D9');
+        }
     }
 });
